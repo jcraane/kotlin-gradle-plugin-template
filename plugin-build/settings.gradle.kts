@@ -8,4 +8,5 @@ pluginManagement {
 
 rootProject.name = ("com.ncorti.kotlin.gradle.template")
 
+include(":test")
 include(":plugin")
