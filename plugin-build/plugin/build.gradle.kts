@@ -8,7 +8,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk7"))
     implementation(gradleApi())
 
-    testImplementation(TestingLib.JUNIT)
+    testImplementation("junit:junit:4.13.1")
 }
 
 java {
@@ -18,24 +18,30 @@ java {
 
 gradlePlugin {
     plugins {
-        create(PluginCoordinates.ID) {
-            id = PluginCoordinates.ID
-            implementationClass = PluginCoordinates.IMPLEMENTATION_CLASS
-            version = PluginCoordinates.VERSION
+        create("com.ncorti.kotlin.gradle.template.plugin") {
+            id = "com.ncorti.kotlin.gradle.template.plugin"
+            implementationClass = "com.ncorti.kotlin.gradle.template.plugin.TemplatePlugin"
+            version = "1.0.0"
         }
     }
 }
 
 // Configuration Block for the Plugin Marker artifact on Plugin Central
 pluginBundle {
-    website = PluginBundle.WEBSITE
-    vcsUrl = PluginBundle.VCS
-    description = PluginBundle.DESCRIPTION
-    tags = PluginBundle.TAGS
+    website = "https://github.com/cortinico/kotlin-gradle-plugin-template"
+    vcsUrl = "https://github.com/cortinico/kotlin-gradle-plugin-template"
+    description = "An empty Gradle plugin created from a template"
+    tags = listOf(
+        "plugin",
+        "gradle",
+        "sample",
+        "template"
+    )
+
 
     plugins {
-        getByName(PluginCoordinates.ID) {
-            displayName = PluginBundle.DISPLAY_NAME
+        getByName("com.ncorti.kotlin.gradle.template.plugin") {
+            displayName = "An empty Gradle Plugin from a template"
         }
     }
 }
